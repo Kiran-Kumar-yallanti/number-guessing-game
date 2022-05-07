@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guess the number</title>
+    <style>
+      * {
+        font-family: "Segoe UI";
+        box-sizing: border-box;
+      }
+      body {
+        color: #fa4753;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        gap: 1em;
+        text-align: center;
+        background-color: #9ba5c9;
+      }
+      main {
+        background-color: #17181c;
+        padding: 5rem;
+        border-radius: 10px;
+        padding-top: 10%;
+      }
+      label {
+        display: block;
+        margin: 20px 0;
+      }
+      input {
+        width: 100%;
+        padding: 5px;
+      }
+      input:focus {
+        outline: none;
+      }
+      button {
+        margin: 20px 0px 0px 0px;
+        padding-bottom: 5px;
+        color: #17181c;
+        background-color: #fa4753;
+        width: 100%;
+        border-style: none;
+        border-radius: 2px;
+        padding: 5px;
+        font-weight: 600;
+        font-size: 18px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Guess the number</h1>
+
+      <div>
+        <label for="input">Enter your guess here</label>
+        <input type="text" for="input" placeholder="1-10, ex=2" "required"/>
+      </div>
+
+      <button>Guess</button>
+      <section></section>
+    </main>
+
+
+    <script>
+
+    const answer = Math.floor(Math.random() * 10 + 1);
+    var btn = document.querySelector("button");
+   
+    var guesses = 0;
+
+    btn.onclick = () => {
+
+       let userInput = document.querySelector("input").value;
+       
+       guesses += 1;
+
+       if(userInput == answer){
+           alert(`the correct number is ${answer}, you took ${guesses} guesses!`); 
+       }
+       else if(userInput < answer){
+           alert("your guess is smaller than the answer, try guessing a bigger number!");
+           document.querySelector("input").value = "";
+           document.querySelector("input").placeholder = "try guessing a bigger number";
+        }
+       else if (userInput > answer){
+           alert("your guess is larger than the answer, try guessing a smaller number!");
+           document.querySelector("input").placeholder = "try guessing a smaller number";
+       }
+       else{
+           alert("enter a valid guess, a number between 1 and 10 !!")
+       }
+    }
+    </script>
+  </body>
+</html>
